@@ -21,7 +21,7 @@ const DoughnutChart = ({
     const rgbaColor2 = hexToRgba(color2, 0.2);
 
     const data = {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["1", "2", "3", "4", "5", "6"],
         datasets: [
             {
                 label: "# of Votes",

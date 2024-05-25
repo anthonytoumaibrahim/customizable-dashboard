@@ -10,12 +10,14 @@ interface ChartWidgetEditorProps {
     name: string;
     component: any;
     id: number;
+    handleGoBack: () => void;
 }
 
 const ChartWidgetEditor = ({
     name,
     component: ChartComponent,
     id,
+    handleGoBack,
 }: ChartWidgetEditorProps) => {
     const [widgetName, setWidgetName] = useState("");
     const [colors, setColors] = useState({
@@ -69,7 +71,9 @@ const ChartWidgetEditor = ({
                 />
 
                 <div className="flex items-center justify-between">
-                    <SecondaryButton>Back</SecondaryButton>
+                    <SecondaryButton onClick={() => handleGoBack()}>
+                        Back
+                    </SecondaryButton>
                     <PrimaryButton onClick={() => addWidget()}>
                         Add Widget
                     </PrimaryButton>
