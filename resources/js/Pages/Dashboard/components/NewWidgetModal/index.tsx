@@ -16,17 +16,17 @@ const NewWidgetModal = ({
         <Modal show={isOpen} onClose={handleClose} maxWidth="2xl">
             <Tab.Group vertical>
                 <div className="flex gap-4 min-h-[320px]">
-                    <Tab.List className="flex flex-col w-1/3 bg-gray-100">
+                    <Tab.List className="flex flex-col w-max bg-gray-100 dark:bg-gray-950">
                         {tabs.map((tab, tabIndex) => {
                             const { name, icon: TabIcon } = tab;
                             return (
                                 <Tab as={Fragment} key={tabIndex}>
                                     {({ selected }) => (
                                         <button
-                                            className={`flex items-center justify-center gap-2 p-4 ${
+                                            className={`flex items-center gap-2 py-4 px-10 ${
                                                 selected
                                                     ? "bg-indigo-500 text-white"
-                                                    : "hover:bg-indigo-200 transition-colors duration-150"
+                                                    : "hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-150"
                                             }`}
                                         >
                                             <TabIcon size={24} />
