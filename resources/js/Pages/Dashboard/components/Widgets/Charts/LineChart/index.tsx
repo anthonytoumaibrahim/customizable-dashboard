@@ -16,6 +16,7 @@ import {
     Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { widgetChartsData } from "../../widgets";
 
 ChartJS.register(
     CategoryScale,
@@ -26,8 +27,6 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
 const LineChart = ({
     className = "",
@@ -47,19 +46,19 @@ const LineChart = ({
             },
         },
     };
-
+    const labels = widgetChartsData.labels;
     const data = {
         labels,
         datasets: [
             {
                 label: "Dataset 1",
-                data: labels.map(() => Math.random() * 1000),
+                data: widgetChartsData.data1,
                 backgroundColor: color1,
                 borderColor: color1,
             },
             {
                 label: "Dataset 2",
-                data: labels.map(() => Math.random() * 1000),
+                data: widgetChartsData.data2,
                 backgroundColor: color2,
                 borderColor: color2,
             },

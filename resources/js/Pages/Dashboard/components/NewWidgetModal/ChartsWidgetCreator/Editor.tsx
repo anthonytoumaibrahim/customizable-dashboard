@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextInput from "@/Components/TextInput";
 import Color from "../components/Color";
-import { chartColors } from "./charts";
+import { widgetColors } from "../../Widgets/widgets";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import { router } from "@inertiajs/react";
@@ -43,7 +43,7 @@ const ChartWidgetEditor = ({
 
             <div className="flex flex-col gap-4 mt-4">
                 <div className="flex gap-2 flex-wrap">
-                    {chartColors.map((colArray) => {
+                    {widgetColors.map((colArray) => {
                         const [col1, col2] = colArray;
                         return (
                             <Color

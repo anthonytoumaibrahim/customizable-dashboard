@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { charts } from "./charts";
+import { widgets } from "../../Widgets/widgets";
 import ChartWidgetEditor from "./Editor";
 
 const ChartsWidgetCreator = () => {
     const [selectedChart, setSelectedChart] = useState<number | null>(null);
-    const selected = charts.filter((chart) => chart.id === selectedChart);
+    const selected = widgets.charts.filter(
+        (chart) => chart.id === selectedChart
+    );
 
     return selectedChart ? (
         <ChartWidgetEditor
@@ -14,7 +16,7 @@ const ChartsWidgetCreator = () => {
         />
     ) : (
         <div className="grid grid-cols-2 gap-4">
-            {charts.map((chart) => {
+            {widgets.charts.map((chart) => {
                 const { id, name, image } = chart;
                 return (
                     <div

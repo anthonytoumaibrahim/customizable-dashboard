@@ -15,6 +15,7 @@ import {
     Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { widgetChartsData } from "../../widgets";
 
 ChartJS.register(
     CategoryScale,
@@ -25,14 +26,13 @@ ChartJS.register(
     Legend
 );
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
 const VerticalBarChart = ({
     className = "",
     name = "Vertical Bar Chart",
     color1 = "#6366f1",
     color2 = "#1f2937",
 }: VerticalBarChartProps) => {
+    const labels = widgetChartsData.labels;
     const options = {
         responsive: true,
         plugins: {
@@ -51,12 +51,12 @@ const VerticalBarChart = ({
         datasets: [
             {
                 label: "Dataset 1",
-                data: labels.map(() => Math.random() * 1000),
+                data: widgetChartsData.data1,
                 backgroundColor: color1,
             },
             {
                 label: "Dataset 2",
-                data: labels.map(() => Math.random() * 1000),
+                data: widgetChartsData.data2,
                 backgroundColor: color2,
             },
         ],
