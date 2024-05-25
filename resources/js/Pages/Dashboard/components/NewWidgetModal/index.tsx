@@ -3,6 +3,7 @@ import { Tab } from "@headlessui/react";
 import { Fragment } from "react/jsx-runtime";
 import { tabs } from "../../data";
 import WeatherWidgetCreator from "./Weather";
+import ChartsWidgetCreator from "./ChartsWidgetCreator";
 
 interface NewWidgetModalProps {
     isOpen: boolean;
@@ -39,7 +40,9 @@ const NewWidgetModal = ({
                         })}
                     </Tab.List>
                     <Tab.Panels className="p-4">
-                        <Tab.Panel>Content 1</Tab.Panel>
+                        <Tab.Panel>
+                            <ChartsWidgetCreator />
+                        </Tab.Panel>
                         <Tab.Panel>Content 2</Tab.Panel>
                         <Tab.Panel>
                             <WeatherWidgetCreator />
