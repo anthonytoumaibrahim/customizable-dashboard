@@ -1,3 +1,11 @@
+import { useState } from "react";
+import type { WidgetsType } from "..";
+
+interface WidgetsGridProps {
+    widgets: WidgetsType;
+}
+
+// dnd
 import {
     DndContext,
     closestCenter,
@@ -12,11 +20,10 @@ import {
     sortableKeyboardCoordinates,
     horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { useState } from "react";
 
 import { SortableItem } from "./SortableItem";
 
-const WidgetsGrid = () => {
+const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
     const [items, setItems] = useState([1, 2]);
     const sensors = useSensors(
         useSensor(PointerSensor),

@@ -8,7 +8,20 @@ import NewWidgetModal from "./components/NewWidgetModal";
 import WeatherWidget from "./components/Widgets/Weather";
 import WidgetsGrid from "./components/WidgetsGrid";
 
-export default function Dashboard({ auth }: PageProps) {
+export type WidgetsType = Array<{
+    id: number;
+    widget_id: number;
+    name: string;
+    color1?: string;
+    color2?: string;
+}>;
+
+export default function Dashboard({
+    auth,
+    widgets = [],
+}: PageProps<{
+    widgets: WidgetsType;
+}>) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -37,7 +50,7 @@ export default function Dashboard({ auth }: PageProps) {
                             />
                         </div>
 
-                        <WidgetsGrid />
+                        <WidgetsGrid widgets={widgets} />
                     </div>
                 </div>
             </div>

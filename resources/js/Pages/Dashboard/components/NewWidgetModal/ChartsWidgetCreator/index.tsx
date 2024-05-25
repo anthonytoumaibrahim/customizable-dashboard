@@ -10,6 +10,7 @@ const ChartsWidgetCreator = () => {
         <ChartWidgetEditor
             name={selected?.[0]?.name}
             component={selected?.[0]?.component}
+            id={selected?.[0]?.id}
         />
     ) : (
         <div className="grid grid-cols-2 gap-4">

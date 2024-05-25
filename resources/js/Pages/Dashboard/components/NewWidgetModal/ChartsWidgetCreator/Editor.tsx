@@ -9,11 +9,13 @@ import { router } from "@inertiajs/react";
 interface ChartWidgetEditorProps {
     name: string;
     component: any;
+    id: number;
 }
 
 const ChartWidgetEditor = ({
     name,
     component: ChartComponent,
+    id,
 }: ChartWidgetEditorProps) => {
     const [widgetName, setWidgetName] = useState("");
     const [colors, setColors] = useState({
@@ -24,6 +26,7 @@ const ChartWidgetEditor = ({
     const addWidget = () => {
         router.post("/add-widget", {
             name: widgetName,
+            widget_id: id,
             color1: colors.color1,
             color2: colors.color2,
         });
