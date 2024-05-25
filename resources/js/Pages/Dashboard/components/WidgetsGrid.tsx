@@ -24,7 +24,7 @@ import {
 import { SortableItem } from "./SortableItem";
 
 const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
-    const [items, setItems] = useState([1, 2]);
+    const [items, setItems] = useState(widgets);
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -56,9 +56,10 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
                 strategy={horizontalListSortingStrategy}
             >
                 <div className="grid grid-cols-3">
-                    {items.map((id) => (
-                        <SortableItem key={id} id={id} />
-                    ))}
+                    {items.map((widgetData) => {
+                        const { id, widget_id, color1, color2 } = widgetData;
+                        return <SortableItem key={id} id={id}></SortableItem>;
+                    })}
                 </div>
             </SortableContext>
         </DndContext>

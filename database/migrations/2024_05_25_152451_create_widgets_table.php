@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('widgets', function (Blueprint $table) {
             $table->id();
             $table->integer('widget_id');
+            $table->string('type');
             $table->unsignedBigInteger('user_id');
             $table->string('name')->nullable();
             $table->string('color1')->nullable();
