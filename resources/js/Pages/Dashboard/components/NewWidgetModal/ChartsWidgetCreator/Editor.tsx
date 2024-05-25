@@ -4,6 +4,7 @@ import Color from "../components/Color";
 import { chartColors } from "./charts";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
+import { router } from "@inertiajs/react";
 
 interface ChartWidgetEditorProps {
     name: string;
@@ -19,6 +20,14 @@ const ChartWidgetEditor = ({
         color1: "",
         color2: "",
     });
+
+    const addWidget = () => {
+        router.post("/add-widget", {
+            name: widgetName,
+            color1: colors.color1,
+            color2: colors.color2,
+        });
+    };
 
     return (
         <div>
@@ -58,7 +67,9 @@ const ChartWidgetEditor = ({
 
                 <div className="flex items-center justify-between">
                     <SecondaryButton>Back</SecondaryButton>
-                    <PrimaryButton>Add Widget</PrimaryButton>
+                    <PrimaryButton onClick={() => addWidget()}>
+                        Add Widget
+                    </PrimaryButton>
                 </div>
             </div>
         </div>
