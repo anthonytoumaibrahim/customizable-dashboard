@@ -6,6 +6,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { FaRegSquarePlus } from "react-icons/fa6";
 import NewWidgetModal from "./components/NewWidgetModal";
 import WeatherWidget from "./components/Widgets/Weather";
+import WidgetsGrid from "./components/WidgetsGrid";
 
 export default function Dashboard({ auth }: PageProps) {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ export default function Dashboard({ auth }: PageProps) {
                             />
                         </div>
 
-                        <WeatherWidget />
+                        <WidgetsGrid />
                     </div>
                 </div>
             </div>
