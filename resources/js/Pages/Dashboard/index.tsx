@@ -7,6 +7,7 @@ import { FaRegSquarePlus } from "react-icons/fa6";
 import NewWidgetModal from "./components/NewWidgetModal";
 import WeatherWidget from "./components/Widgets/Weather";
 import WidgetsGrid from "./components/WidgetsGrid";
+import { Toaster } from "react-hot-toast";
 
 export type WidgetsType = Array<{
     id: number;
@@ -34,6 +35,7 @@ export default function Dashboard({
             }
         >
             <Head title="Dashboard" />
+            <Toaster />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
