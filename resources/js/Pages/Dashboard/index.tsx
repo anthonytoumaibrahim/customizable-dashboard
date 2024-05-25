@@ -5,6 +5,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { FaRegSquarePlus } from "react-icons/fa6";
 import Modal from "@/Components/Modal";
+import NewWidgetModal from "./components/NewWidgetModal";
 
 export default function Dashboard({ auth }: PageProps) {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,14 +30,10 @@ export default function Dashboard({ auth }: PageProps) {
                                 <FaRegSquarePlus size={18} className="mr-2" />
                                 Add New
                             </PrimaryButton>
-                            <Modal
-                                show={isOpen}
-                                onClose={() => setIsOpen(false)}
-                            >
-                                <div className="p-6">
-                                    <h4 className="text-xl">Add New Widget</h4>
-                                </div>
-                            </Modal>
+                            <NewWidgetModal
+                                isOpen={isOpen}
+                                handleClose={() => setIsOpen(false)}
+                            />
                         </div>
                     </div>
                 </div>
