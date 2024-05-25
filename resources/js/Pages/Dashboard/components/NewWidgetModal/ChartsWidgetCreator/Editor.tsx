@@ -28,7 +28,7 @@ const ChartWidgetEditor = ({
             />
 
             <div className="flex flex-col gap-4 mt-4">
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                     {chartColors.map((colArray) => {
                         const [col1, col2] = colArray;
                         return (
