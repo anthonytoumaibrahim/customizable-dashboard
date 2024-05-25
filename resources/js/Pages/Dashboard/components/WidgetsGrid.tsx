@@ -17,7 +17,7 @@ import { useState } from "react";
 import { SortableItem } from "./SortableItem";
 
 const WidgetsGrid = () => {
-    const [items, setItems] = useState([1, 2, 3]);
+    const [items, setItems] = useState([1, 2]);
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
