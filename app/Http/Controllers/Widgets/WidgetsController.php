@@ -13,6 +13,7 @@ class WidgetsController extends Controller
     {
         $widget = new Widget();
         $widget->widget_id = $request->widget_id;
+        $widget->type = $request->type;
         $widget->user_id = $request->user()->id;
         $widget->name = $request->name;
         $widget->color1 = $request->color1;

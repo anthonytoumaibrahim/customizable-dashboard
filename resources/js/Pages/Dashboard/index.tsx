@@ -13,6 +13,7 @@ export type WidgetsType = Array<{
     id: number;
     widget_id: number;
     name: string;
+    type: "charts" | "weather";
     color1?: string;
     color2?: string;
 }>;

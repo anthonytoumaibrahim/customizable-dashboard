@@ -32,6 +32,7 @@ const ChartWidgetEditor = ({
         }
         router.post("/add-widget", {
             name: widgetName,
+            type: "charts",
             widget_id: id,
             color1: colors.color1,
             color2: colors.color2,

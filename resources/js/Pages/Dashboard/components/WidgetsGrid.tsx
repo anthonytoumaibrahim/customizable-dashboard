@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { WidgetsType } from "..";
+import { widgets } from "./Widgets/widgets";
 
 interface WidgetsGridProps {
     widgets: WidgetsType;
@@ -20,8 +21,7 @@ import {
     sortableKeyboardCoordinates,
     horizontalListSortingStrategy,
 } from "@dnd-kit/sortable";
-
-import { SortableItem } from "./SortableItem";
+import SortableItem from "./SortableItem";
 
 const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
     const [items, setItems] = useState(widgets);
@@ -57,8 +57,16 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
             >
                 <div className="grid grid-cols-3">
                     {items.map((widgetData) => {
-                        const { id, widget_id, color1, color2 } = widgetData;
-                        return <SortableItem key={id} id={id}></SortableItem>;
+                        const { id, type, widget_id, color1, color2 } =
+                            widgetData;
+                        const widget = widgets?.type?.filter(
+                            (widget) => widget.id === widget_id
+                        );
+                        return (
+                            <SortableItem key={id} id={id}>
+                                {widget?.[0]?.component}
+                            </SortableItem>
+                        );
                     })}
                 </div>
             </SortableContext>
