@@ -4,7 +4,6 @@ import { Head } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { FaRegSquarePlus } from "react-icons/fa6";
-import Modal from "@/Components/Modal";
 import NewWidgetModal from "./components/NewWidgetModal";
 
 export default function Dashboard({ auth }: PageProps) {
