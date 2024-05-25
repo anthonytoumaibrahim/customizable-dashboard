@@ -5,6 +5,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { FaRegSquarePlus } from "react-icons/fa6";
 import NewWidgetModal from "./components/NewWidgetModal";
+import WeatherWidget from "./components/Widgets/Weather";
 
 export default function Dashboard({ auth }: PageProps) {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +35,8 @@ export default function Dashboard({ auth }: PageProps) {
                                 handleClose={() => setIsOpen(false)}
                             />
                         </div>
+
+                        <WeatherWidget />
                     </div>
                 </div>
             </div>
