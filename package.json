@@ -24,6 +24,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@dnd-kit/core": "^6.1.0",
         "chart.js": "^4.4.3",
         "react-chartjs-2": "^5.2.0",
         "react-icons": "^5.2.1"
