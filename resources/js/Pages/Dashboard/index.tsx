@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PrimaryButton from "@/Components/PrimaryButton";
-
 import { FaRegSquarePlus } from "react-icons/fa6";
+import Modal from "@/Components/Modal";
 
 export default function Dashboard({ auth }: PageProps) {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -22,10 +25,18 @@ export default function Dashboard({ auth }: PageProps) {
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 dark:text-gray-100">
                         <div className="flex items-center justify-between">
                             <h3 className="text-2xl">My Widgets</h3>
-                            <PrimaryButton>
+                            <PrimaryButton onClick={() => setIsOpen(true)}>
                                 <FaRegSquarePlus size={18} className="mr-2" />
                                 Add New
                             </PrimaryButton>
+                            <Modal
+                                show={isOpen}
+                                onClose={() => setIsOpen(false)}
+                            >
+                                <div className="p-6">
+                                    <h4 className="text-xl">Add New Widget</h4>
+                                </div>
+                            </Modal>
                         </div>
                     </div>
                 </div>
