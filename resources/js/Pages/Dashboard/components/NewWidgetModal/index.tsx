@@ -2,6 +2,7 @@ import Modal from "@/Components/Modal";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react/jsx-runtime";
 import { tabs } from "../../data";
+import WeatherWidgetCreator from "./Weather";
 
 interface NewWidgetModalProps {
     isOpen: boolean;
@@ -40,7 +41,9 @@ const NewWidgetModal = ({
                     <Tab.Panels className="p-4">
                         <Tab.Panel>Content 1</Tab.Panel>
                         <Tab.Panel>Content 2</Tab.Panel>
-                        <Tab.Panel>Content 3</Tab.Panel>
+                        <Tab.Panel>
+                            <WeatherWidgetCreator />
+                        </Tab.Panel>
                     </Tab.Panels>
                 </div>
             </Tab.Group>
