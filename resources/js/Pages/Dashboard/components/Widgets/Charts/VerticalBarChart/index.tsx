@@ -1,3 +1,9 @@
+interface VerticalBarChartProps {
+    className?: string;
+    color1?: string;
+    color2: string;
+}
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -33,24 +39,28 @@ export const options = {
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: "Dataset 1",
-            data: labels.map(() => Math.random() * 1000),
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
-        },
-        {
-            label: "Dataset 2",
-            data: labels.map(() => Math.random() * 1000),
-            backgroundColor: "rgba(53, 162, 235, 0.5)",
-        },
-    ],
-};
+const VerticalBarChart = ({
+    className = "",
+    color1 = "#6366f1",
+    color2 = "#1f2937",
+}: VerticalBarChartProps) => {
+    const data = {
+        labels,
+        datasets: [
+            {
+                label: "Dataset 1",
+                data: labels.map(() => Math.random() * 1000),
+                backgroundColor: color1,
+            },
+            {
+                label: "Dataset 2",
+                data: labels.map(() => Math.random() * 1000),
+                backgroundColor: color2,
+            },
+        ],
+    };
 
-const VerticalBarChart = () => {
-    return <Bar options={options} data={data} />;
+    return <Bar options={options} data={data} className={`${className}`} />;
 };
 
 export default VerticalBarChart;

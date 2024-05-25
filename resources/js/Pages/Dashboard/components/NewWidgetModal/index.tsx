@@ -39,7 +39,7 @@ const NewWidgetModal = ({
                             );
                         })}
                     </Tab.List>
-                    <Tab.Panels className="p-4">
+                    <Tab.Panels className="p-4 w-full">
                         <Tab.Panel>
                             <ChartsWidgetCreator />
                         </Tab.Panel>
