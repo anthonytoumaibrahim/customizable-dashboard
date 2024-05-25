@@ -1,3 +1,4 @@
+import DoughnutChart from "../../Widgets/Charts/DoughnutChart";
 import LineChart from "../../Widgets/Charts/LineChart";
 import VerticalBarChart from "../../Widgets/Charts/VerticalBarChart";
 
@@ -17,6 +18,7 @@ export const charts = [
         id: 3,
         name: "Doughnut Chart",
         image: "/assets/widgets/doughnut.svg",
+        component: DoughnutChart,
     },
     {
         id: 4,
