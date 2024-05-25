@@ -5,6 +5,7 @@ import { widgetColors } from "../../Widgets/widgets";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import { router } from "@inertiajs/react";
+import toast from "react-hot-toast";
 
 interface ChartWidgetEditorProps {
     name: string;
@@ -26,6 +27,9 @@ const ChartWidgetEditor = ({
     });
 
     const addWidget = () => {
+        if (widgetName.trim() === "") {
+            return toast.error("Please enter a name for this chart.");
+        }
         router.post("/add-widget", {
             name: widgetName,
             widget_id: id,

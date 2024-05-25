@@ -11,11 +11,11 @@ export const widgets = {
             image: "/assets/widgets/vertical.svg",
             component: VerticalBarChart,
         },
-        {
-            id: 2,
-            name: "Pie Chart",
-            image: "/assets/widgets/pie.svg",
-        },
+        // {
+        //     id: 2,
+        //     name: "Pie Chart",
+        //     image: "/assets/widgets/pie.svg",
+        // },
         {
             id: 3,
             name: "Doughnut Chart",
