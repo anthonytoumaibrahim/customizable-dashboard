@@ -23,3 +23,10 @@ export const charts = [
         image: "/assets/widgets/line.svg",
     },
 ];
+
+export const chartColors = [
+    ["#dc2626", "#0d9488"],
+    ["#16a34a", "#4f46e5"],
+    ["#c026d3", "#2563eb"],
+    ["#d97706", "#e11d48"],
+];

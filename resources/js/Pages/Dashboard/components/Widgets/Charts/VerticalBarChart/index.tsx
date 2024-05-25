@@ -2,6 +2,7 @@ interface VerticalBarChartProps {
     className?: string;
     color1?: string;
     color2: string;
+    name?: string;
 }
 
 import {
@@ -24,26 +25,27 @@ ChartJS.register(
     Legend
 );
 
-export const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: "top" as const,
-        },
-        title: {
-            display: true,
-            text: "Chart.js Bar Chart",
-        },
-    },
-};
-
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
 const VerticalBarChart = ({
     className = "",
+    name = "Vertical Bar Chart",
     color1 = "#6366f1",
     color2 = "#1f2937",
 }: VerticalBarChartProps) => {
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "top" as const,
+            },
+            title: {
+                display: true,
+                text: name,
+            },
+        },
+    };
+
     const data = {
         labels,
         datasets: [

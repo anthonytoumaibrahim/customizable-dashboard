@@ -21,7 +21,7 @@ const ChartsWidgetCreator = () => {
                         className="rounded border dark:border-gray-900 shadow-sm overflow-hidden cursor-pointer group hover:border-indigo-500 transition-colors duration-150 flex flex-col justify-between"
                         onClick={() => setSelectedChart(id)}
                     >
-                        <div className="p-4 dark:bg-gray-900 group-hover:bg-indigo-100 transition-colors duration-150 h-full">
+                        <div className="p-4 dark:bg-gray-900 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/30 transition-colors duration-150 h-full">
                             <img
                                 src={image}
                                 alt=""
