@@ -1,3 +1,4 @@
+import LineChart from "../../Widgets/Charts/LineChart";
 import VerticalBarChart from "../../Widgets/Charts/VerticalBarChart";
 
 export const charts = [
@@ -21,6 +22,7 @@ export const charts = [
         id: 4,
         name: "Line Chart",
         image: "/assets/widgets/line.svg",
+        component: LineChart,
     },
 ];
 

@@ -2,6 +2,8 @@ import { useState } from "react";
 import TextInput from "@/Components/TextInput";
 import Color from "../components/Color";
 import { chartColors } from "./charts";
+import PrimaryButton from "@/Components/PrimaryButton";
+import SecondaryButton from "@/Components/SecondaryButton";
 
 interface ChartWidgetEditorProps {
     name: string;
@@ -53,6 +55,11 @@ const ChartWidgetEditor = ({
                     value={widgetName}
                     onChange={(e) => setWidgetName(e.target.value)}
                 />
+
+                <div className="flex items-center justify-between">
+                    <SecondaryButton>Back</SecondaryButton>
+                    <PrimaryButton>Add Widget</PrimaryButton>
+                </div>
             </div>
         </div>
     );
