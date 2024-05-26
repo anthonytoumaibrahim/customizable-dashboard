@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('widgets', function (Blueprint $table) {
             $table->integer('order')->after('widget_id')->default(0);
+            $table->integer('size')->after('widget_id')->default('small');
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('widgets', function (Blueprint $table) {
             $table->dropColumn('order');
+            $table->dropColumn('size');
         });
     }
 };
