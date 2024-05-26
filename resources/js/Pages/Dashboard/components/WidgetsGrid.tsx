@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { WidgetsType } from "..";
-import { widgets } from "./Widgets/widgets";
+import { widgets as widgetsData } from "./Widgets/widgets";
 
 interface WidgetsGridProps {
     widgets: WidgetsType;
@@ -55,16 +55,24 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
                 items={items}
                 strategy={horizontalListSortingStrategy}
             >
-                <div className="grid grid-cols-3">
-                    {items.map((widgetData) => {
-                        const { id, type, widget_id, color1, color2 } =
-                            widgetData;
-                        const widget = widgets?.type?.filter(
+                <div className="grid grid-cols-3 gap-6 mt-6">
+                    {items.map((data) => {
+                        const { id, name, type, widget_id, color1, color2 } =
+                            data;
+                        const widget = widgetsData?.[type].filter(
                             (widget) => widget.id === widget_id
-                        );
+                        )?.[0];
+                        const WidgetComponent = widget.component;
+
                         return (
                             <SortableItem key={id} id={id}>
-                                {widget?.[0]?.component}
+                                <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center">
+                                    <WidgetComponent
+                                        name={name}
+                                        color1={color1}
+                                        color2={color2}
+                                    />
+                                </div>
                             </SortableItem>
                         );
                     })}

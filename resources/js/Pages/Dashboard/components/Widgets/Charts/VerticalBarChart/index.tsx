@@ -1,7 +1,7 @@
 interface VerticalBarChartProps {
     className?: string;
     color1?: string;
-    color2: string;
+    color2?: string;
     name?: string;
 }
 
