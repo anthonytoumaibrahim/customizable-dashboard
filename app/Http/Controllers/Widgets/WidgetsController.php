@@ -24,7 +24,8 @@ class WidgetsController extends Controller
         $widget->saveOrFail();
 
         return response()->json([
-            'success' => true
+            'success' => true,
+            'widget' => $widget
         ]);
     }
 
