@@ -39,19 +39,10 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
         })
     );
 
-    const handleDelete = (id: number) => {
-        dispatch({
-            type: "widgets/removeWidget",
-            payload: id,
-        });
-    };
-
     function handleDragEnd(event: DragEndEvent) {
         const { active, over } = event;
 
-        if (!over) {
-            return;
-        }
+        if (!over) return;
 
         if (active.id !== over.id) {
             const activeIndex = widgetsSelector.findIndex(
@@ -103,51 +94,9 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
                         className="grid grid-cols-3 gap-6 mt-6"
                         data-no-dnd="true"
                     >
-                        {widgetsSelector.map((data) => {
-                            const {
-                                id,
-                                name,
-                                type,
-                                widget_id,
-                                color1,
-                                color2,
-                                size,
-                            } = data;
-                            const widget = widgetsData?.[type].filter(
-                                (widget) => widget.id === widget_id
-                            )?.[0];
-                            const WidgetComponent = widget.component;
-
-                            return (
-                                <SortableItem
-                                    key={id}
-                                    id={id}
-                                    wrapperStyle={() => {
-                                        if (size === "large") {
-                                            return {
-                                                gridColumnStart: "span 2",
-                                            };
-                                        }
-
-                                        return {};
-                                    }}
-                                >
-                                    <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center shadow hover:shadow-lg relative group">
-                                        <button
-                                            className="opacity-0 group-hover:opacity-100 absolute top-2 right-2 p-2 rounded border shadow-sm bg-red-500 hover:bg-red-400 text-white"
-                                            onClick={() => handleDelete(id)}
-                                        >
-                                            <FaTrash />
-                                        </button>
-                                        <WidgetComponent
-                                            name={name}
-                                            color1={color1}
-                                            color2={color2}
-                                        />
-                                    </div>
-                                </SortableItem>
-                            );
-                        })}
+                        {widgetsSelector.map((data) => (
+                            <SortableItem key={data.id} widget={data} />
+                        ))}
                     </div>
                 </SortableContext>
             </DndContext>
