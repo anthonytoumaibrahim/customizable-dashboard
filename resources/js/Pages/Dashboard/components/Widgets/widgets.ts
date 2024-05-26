@@ -2,6 +2,7 @@
 import DoughnutChart from "./Charts/DoughnutChart";
 import LineChart from "./Charts/LineChart";
 import VerticalBarChart from "./Charts/VerticalBarChart";
+import WeatherWidget from "./Weather";
 
 export const widgets = {
     charts: [
@@ -27,6 +28,13 @@ export const widgets = {
             name: "Line Chart",
             image: "/assets/widgets/line.svg",
             component: LineChart,
+        },
+    ],
+    weather: [
+        {
+            id: 1,
+            name: "Weather Widget",
+            component: WeatherWidget,
         },
     ],
 };

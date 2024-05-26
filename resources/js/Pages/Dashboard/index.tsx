@@ -10,6 +10,7 @@ import WidgetsGrid from "./components/WidgetsGrid";
 import { Toaster } from "react-hot-toast";
 
 export type WidgetsType = Array<{
+    order: number;
     id: number;
     widget_id: number;
     name: string;

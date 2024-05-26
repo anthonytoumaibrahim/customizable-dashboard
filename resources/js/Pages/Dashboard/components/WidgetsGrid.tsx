@@ -14,17 +14,20 @@ import {
     PointerSensor,
     useSensor,
     useSensors,
+    DragEndEvent,
 } from "@dnd-kit/core";
 import {
     arrayMove,
     SortableContext,
     sortableKeyboardCoordinates,
-    horizontalListSortingStrategy,
+    rectSwappingStrategy,
 } from "@dnd-kit/sortable";
 import SortableItem from "./SortableItem";
 
 const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
-    const [items, setItems] = useState(widgets);
+    const [items, setItems] = useState(
+        widgets.sort((a, b) => a.order - b.order)
+    );
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -32,15 +35,28 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
         })
     );
 
-    function handleDragEnd(event) {
+    function handleDragEnd(event: DragEndEvent) {
         const { active, over } = event;
+
+        if (!over) {
+            return;
+        }
 
         if (active.id !== over.id) {
             setItems((items) => {
-                const oldIndex = items.indexOf(active.id);
-                const newIndex = items.indexOf(over.id);
+                const activeIndex = items.findIndex(
+                    (item) => item.id === active.id
+                );
+                const overIndex = items.findIndex(
+                    (item) => item.id === over.id
+                );
 
-                return arrayMove(items, oldIndex, newIndex);
+                const newItems = [...items];
+                const tempOrder = newItems[activeIndex].order;
+                newItems[activeIndex].order = newItems[overIndex].order;
+                newItems[overIndex].order = tempOrder;
+
+                return newItems.sort((a, b) => a.order - b.order);
             });
         }
     }
@@ -51,10 +67,7 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
         >
-            <SortableContext
-                items={items}
-                strategy={horizontalListSortingStrategy}
-            >
+            <SortableContext items={items} strategy={rectSwappingStrategy}>
                 <div className="grid grid-cols-3 gap-6 mt-6">
                     {items.map((data) => {
                         const { id, name, type, widget_id, color1, color2 } =
