@@ -42,6 +42,5 @@ class WidgetsController extends Controller
             'id' => 'exists:widgets,id'
         ]);
         $widget = Widget::find($request->id)->delete();
-        return Redirect::refresh();
     }
 }

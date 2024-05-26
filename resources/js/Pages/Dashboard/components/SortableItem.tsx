@@ -7,6 +7,7 @@ import { widgets as widgetsData } from "./Widgets/widgets";
 // Icons
 import { FaTrash } from "react-icons/fa6";
 import { MdDragIndicator } from "react-icons/md";
+import { router } from "@inertiajs/react";
 
 interface SortableItemProps {
     widget: WidgetsType;
@@ -50,14 +51,19 @@ const SortableItem = ({ widget }: SortableItemProps) => {
             type: "widgets/removeWidget",
             payload: id,
         });
+        router.delete("/widget", {
+            data: {
+                id: widget.id,
+            },
+        });
     };
 
     return (
         <div ref={setNodeRef} style={style}>
             <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center shadow hover:shadow-lg relative group">
-                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 flex items-center gap-2">
+                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 flex items-center gap-1">
                     <button
-                        className="p-2 rounded border shadow-sm bg-red-500 hover:bg-red-400 text-white"
+                        className="p-2 rounded border dark:border-black shadow-sm bg-red-500 hover:bg-red-400 text-white"
                         onClick={() => handleDelete(id)}
                     >
                         <FaTrash />
@@ -65,7 +71,7 @@ const SortableItem = ({ widget }: SortableItemProps) => {
                     <button
                         {...attributes}
                         {...listeners}
-                        className="p-2 rounded border shadow-sm"
+                        className="p-2 rounded border dark:border-black shadow-sm bg-white hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600"
                     >
                         <MdDragIndicator />
                     </button>
