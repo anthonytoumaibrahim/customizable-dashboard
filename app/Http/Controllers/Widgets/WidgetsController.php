@@ -14,6 +14,7 @@ class WidgetsController extends Controller
         $widget = new Widget();
         $widget->widget_id = $request->widget_id;
         $widget->order = $request->order;
+        $widget->size = $request->size;
         $widget->type = $request->type;
         $widget->user_id = $request->user()->id;
         $widget->name = $request->name;

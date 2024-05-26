@@ -7,6 +7,7 @@ import SecondaryButton from "@/Components/SecondaryButton";
 import { router } from "@inertiajs/react";
 import toast from "react-hot-toast";
 import { useAppSelector } from "@/redux/hooks";
+import Checkbox from "@/Components/Checkbox";
 
 interface ChartWidgetEditorProps {
     name: string;
@@ -26,10 +27,14 @@ const ChartWidgetEditor = ({
         color1: "",
         color2: "",
     });
+    const [large, setLarge] = useState(false);
 
-    // const widgetOrderSelector = useAppSelector((state) => {
-    //     const widgets = state.widgetsSlice.widgets;
-    // });
+    const widgetOrderSelector = useAppSelector((state) => {
+        const widgets = state.widgetsSlice.widgets;
+        if (widgets.length === 0) return 1;
+        const lastWidget = widgets[widgets.length - 1];
+        return lastWidget.order + 1;
+    });
 
     const addWidget = () => {
         if (widgetName.trim() === "") {
@@ -41,6 +46,8 @@ const ChartWidgetEditor = ({
                 name: widgetName,
                 type: "charts",
                 widget_id: id,
+                order: widgetOrderSelector,
+                size: large ? "large" : "small",
                 color1: colors.color1,
                 color2: colors.color2,
             },
@@ -90,6 +97,17 @@ const ChartWidgetEditor = ({
                     value={widgetName}
                     onChange={(e) => setWidgetName(e.target.value)}
                 />
+
+                <label className="flex items-center">
+                    <Checkbox
+                        name="remember"
+                        checked={large}
+                        onChange={(e) => setLarge(e.target.checked)}
+                    />
+                    <span className="ms-2 text-gray-600 dark:text-gray-400">
+                        Make this widget large
+                    </span>
+                </label>
 
                 <div className="flex items-center justify-between">
                     <SecondaryButton onClick={() => handleGoBack()}>
