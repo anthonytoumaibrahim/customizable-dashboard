@@ -100,6 +100,7 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
                                 widget_id,
                                 color1,
                                 color2,
+                                size,
                             } = data;
                             const widget = widgetsData?.[type].filter(
                                 (widget) => widget.id === widget_id
@@ -107,7 +108,20 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
                             const WidgetComponent = widget.component;
 
                             return (
-                                <SortableItem key={id} id={id}>
+                                <SortableItem
+                                    key={id}
+                                    id={id}
+                                    wrapperStyle={() => {
+                                        if (size === "large") {
+                                            return {
+                                                gridRowStart: "span 2",
+                                                gridColumnStart: "span 2",
+                                            };
+                                        }
+
+                                        return {};
+                                    }}
+                                >
                                     <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center shadow hover:shadow-lg">
                                         <WidgetComponent
                                             name={name}

@@ -18,6 +18,7 @@ export type WidgetsType = {
     type: "charts";
     color1?: string;
     color2?: string;
+    size?: "small" | "large";
 };
 
 export default function Dashboard({
