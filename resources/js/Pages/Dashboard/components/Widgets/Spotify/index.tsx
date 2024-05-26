@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Spotify } from "react-spotify-embed";
 
 interface SpotifyWidgetProps {
@@ -5,9 +6,14 @@ interface SpotifyWidgetProps {
 }
 
 const SpotifyWidget = ({
-    dataset_url = "https://open.spotify.com/album/0fUy6IdLHDpGNwavIlhEsl?si=mTiITmlHQpaGkoivGTv8Jw",
+    dataset_url = "https://open.spotify.com/track/777zXDJpBufzttU4AJ2dGO?si=4f749eb33c594520",
 }: SpotifyWidgetProps) => {
-    return <Spotify className="w-full h-full" link={dataset_url} />;
+    const SpotifyMemo = useMemo(
+        () => <Spotify className="w-full h-full" link={dataset_url} />,
+        [dataset_url]
+    );
+
+    return SpotifyMemo;
 };
 
 export default SpotifyWidget;
