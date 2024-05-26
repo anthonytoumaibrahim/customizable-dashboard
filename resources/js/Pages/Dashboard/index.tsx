@@ -10,7 +10,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import NewWidgetModal from "./components/NewWidgetModal";
 import WidgetsGrid from "./components/WidgetsGrid";
 
-export type WidgetsType = Array<{
+export type WidgetsType = {
     order: number;
     id: number;
     widget_id: number;
@@ -18,13 +18,13 @@ export type WidgetsType = Array<{
     type: "charts";
     color1?: string;
     color2?: string;
-}>;
+};
 
 export default function Dashboard({
     auth,
     widgets = [],
 }: PageProps<{
-    widgets: WidgetsType;
+    widgets: Array<WidgetsType>;
 }>) {
     const [isOpen, setIsOpen] = useState(false);
 

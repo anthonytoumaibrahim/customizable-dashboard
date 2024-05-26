@@ -3,7 +3,7 @@ import type { WidgetsType } from "..";
 import { widgets as widgetsData } from "./Widgets/widgets";
 
 interface WidgetsGridProps {
-    widgets: WidgetsType;
+    widgets: Array<WidgetsType>;
 }
 
 // dnd

@@ -14,12 +14,18 @@ export const widgetsSlice = createSlice({
     name: "widgets",
     initialState,
     reducers: {
+        initializeWidgets: (
+            state,
+            action: PayloadAction<Array<WidgetsType>>
+        ) => {
+            state.widgets = action.payload;
+        },
         addWidget: (state, action: PayloadAction<WidgetsType>) => {
             state.widgets.push(action.payload);
         },
     },
 });
 
-export const { addWidget } = widgetsSlice.actions;
+export const { addWidget, initializeWidgets } = widgetsSlice.actions;
 
 export default widgetsSlice.reducer;

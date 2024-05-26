@@ -23,7 +23,17 @@ class WidgetsController extends Controller
         $widget->widget_data = $request->widget_data;
         $widget->saveOrFail();
 
-        return Redirect::refresh();
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
+    public function moveWidget(Request $request)
+    {
+        $request->validate([
+            'id1' => 'exists:widgets,id',
+            'id2' => 'exists:widgets,id'
+        ]);
     }
 
     public function deleteWidget(Request $request)
