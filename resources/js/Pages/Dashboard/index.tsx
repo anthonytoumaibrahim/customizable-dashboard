@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { PageProps } from "@/types";
 import { Head } from "@inertiajs/react";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import PrimaryButton from "@/Components/PrimaryButton";
-import { FaRegSquarePlus } from "react-icons/fa6";
-import NewWidgetModal from "./components/NewWidgetModal";
-import WeatherWidget from "./components/Widgets/Weather";
-import WidgetsGrid from "./components/WidgetsGrid";
 import { Toaster } from "react-hot-toast";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { FaRegSquarePlus } from "react-icons/fa6";
+
+// Components
+import PrimaryButton from "@/Components/PrimaryButton";
+import NewWidgetModal from "./components/NewWidgetModal";
+import WidgetsGrid from "./components/WidgetsGrid";
 
 export type WidgetsType = Array<{
     order: number;
