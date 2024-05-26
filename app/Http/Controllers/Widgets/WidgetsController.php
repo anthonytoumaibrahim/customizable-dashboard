@@ -15,12 +15,12 @@ class WidgetsController extends Controller
         $widget = new Widget();
         $widget->widget_id = $request->widget_id;
         $widget->order = $request->order;
-        $widget->size = $request->size;
+        $widget->size = $request->size ?? "small";
         $widget->type = $request->type;
         $widget->user_id = $request->user()->id;
         $widget->name = $request->name;
-        $widget->color1 = $request->color1;
-        $widget->color2 = $request->color2;
+        $widget->color1 = $request->color1 ?? "";
+        $widget->color2 = $request->color2 ?? "";
         $widget->dataset_url = $request->dataset_url;
         $widget->widget_data = $request->widget_data;
         $widget->saveOrFail();

@@ -8,6 +8,7 @@ import { router } from "@inertiajs/react";
 import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Checkbox from "@/Components/Checkbox";
+import { useWidgetOrder } from "@/hooks/useWidgetOrder";
 
 interface ChartWidgetEditorProps {
     name: string;
@@ -30,12 +31,7 @@ const ChartWidgetEditor = ({
     const [large, setLarge] = useState(false);
 
     const dispatch = useAppDispatch();
-    const widgetOrderSelector = useAppSelector((state) => {
-        const widgets = state.widgetsSlice.widgets;
-        if (widgets.length === 0) return 1;
-        const lastWidget = widgets[widgets.length - 1];
-        return lastWidget.order + 1;
-    });
+    const widgetOrderSelector = useWidgetOrder();
 
     const addWidget = () => {
         if (widgetName.trim() === "") {
