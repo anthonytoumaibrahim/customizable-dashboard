@@ -8,6 +8,7 @@ import { widgets as widgetsData } from "./Widgets/widgets";
 import { FaTrash } from "react-icons/fa6";
 import { MdDragIndicator } from "react-icons/md";
 import { router } from "@inertiajs/react";
+import axios from "axios";
 
 interface SortableItemProps {
     widget: WidgetsType;
@@ -52,7 +53,7 @@ const SortableItem = ({ widget }: SortableItemProps) => {
             type: "widgets/removeWidget",
             payload: id,
         });
-        router.delete("/widget", {
+        axios.delete("/widget", {
             data: {
                 id: widget.id,
             },

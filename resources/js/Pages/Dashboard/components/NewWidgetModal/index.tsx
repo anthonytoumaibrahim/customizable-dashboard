@@ -2,9 +2,12 @@ import Modal from "@/Components/Modal";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react/jsx-runtime";
 import { tabs } from "../../data";
+
+// Components
 import WeatherWidgetCreator from "./WeatherWidgetCreator";
 import ChartsWidgetCreator from "./ChartsWidgetCreator";
 import SpotifyWidgetCreator from "./SpotifyWidgetCreator";
+import StockWidgetCreator from "./StockWidgetCreator";
 
 interface NewWidgetModalProps {
     isOpen: boolean;
@@ -52,6 +55,9 @@ const NewWidgetModal = ({
                         </Tab.Panel>
                         <Tab.Panel>
                             <WeatherWidgetCreator />
+                        </Tab.Panel>
+                        <Tab.Panel>
+                            <StockWidgetCreator />
                         </Tab.Panel>
                     </Tab.Panels>
                 </div>
