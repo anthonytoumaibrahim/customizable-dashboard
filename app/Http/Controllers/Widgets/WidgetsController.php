@@ -13,6 +13,7 @@ class WidgetsController extends Controller
     {
         $widget = new Widget();
         $widget->widget_id = $request->widget_id;
+        $widget->order = $request->order;
         $widget->type = $request->type;
         $widget->user_id = $request->user()->id;
         $widget->name = $request->name;
@@ -22,6 +23,15 @@ class WidgetsController extends Controller
         $widget->widget_data = $request->widget_data;
         $widget->saveOrFail();
 
-        return Redirect::route('dashboard');
+        return Redirect::refresh();
+    }
+
+    public function deleteWidget(Request $request)
+    {
+        $request->validate([
+            'id' => 'exists:widgets,id'
+        ]);
+        $widget = Widget::find($request->id)->delete();
+        return Redirect::refresh();
     }
 }
