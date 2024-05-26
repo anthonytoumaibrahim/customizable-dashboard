@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Widgets;
 
-use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 use App\Models\Widget;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 
 class WidgetsController extends Controller
@@ -24,10 +25,7 @@ class WidgetsController extends Controller
         $widget->widget_data = $request->widget_data;
         $widget->saveOrFail();
 
-        return response()->json([
-            'success' => true,
-            'widget' => $widget
-        ]);
+        return Redirect::route('dashboard');
     }
 
     public function moveWidget(Request $request)

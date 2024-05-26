@@ -6,7 +6,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import { router } from "@inertiajs/react";
 import toast from "react-hot-toast";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Checkbox from "@/Components/Checkbox";
 
 interface ChartWidgetEditorProps {
@@ -29,6 +29,7 @@ const ChartWidgetEditor = ({
     });
     const [large, setLarge] = useState(false);
 
+    const dispatch = useAppDispatch();
     const widgetOrderSelector = useAppSelector((state) => {
         const widgets = state.widgetsSlice.widgets;
         if (widgets.length === 0) return 1;
@@ -40,26 +41,15 @@ const ChartWidgetEditor = ({
         if (widgetName.trim() === "") {
             return toast.error("Please enter a name for this chart.");
         }
-        router.post(
-            "/add-widget",
-            {
-                name: widgetName,
-                type: "charts",
-                widget_id: id,
-                order: widgetOrderSelector,
-                size: large ? "large" : "small",
-                color1: colors.color1,
-                color2: colors.color2,
-            },
-            {
-                onSuccess: (props) => {
-                    console.log(props);
-                },
-                onError: (errors) => {
-                    toast.error("Sorry, something went wrong.");
-                },
-            }
-        );
+        router.post("/add-widget", {
+            name: widgetName,
+            type: "charts",
+            widget_id: id,
+            order: widgetOrderSelector,
+            size: large ? "large" : "small",
+            color1: colors.color1,
+            color2: colors.color2,
+        });
     };
 
     return (

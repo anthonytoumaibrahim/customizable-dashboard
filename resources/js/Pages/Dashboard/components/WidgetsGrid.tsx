@@ -114,7 +114,6 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
                                     wrapperStyle={() => {
                                         if (size === "large") {
                                             return {
-                                                gridRowStart: "span 2",
                                                 gridColumnStart: "span 2",
                                             };
                                         }
