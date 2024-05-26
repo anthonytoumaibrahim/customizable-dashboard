@@ -59,7 +59,7 @@ const SortableItem = ({ widget }: SortableItemProps) => {
     };
 
     return (
-        <div ref={setNodeRef} style={style}>
+        <div ref={setNodeRef} style={style} className="w-full">
             <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center shadow hover:shadow-lg relative group">
                 <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 flex items-center gap-1">
                     <button
