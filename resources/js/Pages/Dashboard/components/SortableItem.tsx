@@ -39,7 +39,8 @@ const SortableItem = ({ widget }: SortableItemProps) => {
         ...wrapperStyle,
     };
 
-    const { id, name, type, widget_id, color1, color2, size } = widget;
+    const { id, name, type, widget_id, color1, color2, size, dataset_url } =
+        widget;
 
     const selectedWidget = widgetsData?.[type].filter(
         (widget) => widget.id === widget_id
@@ -60,7 +61,7 @@ const SortableItem = ({ widget }: SortableItemProps) => {
 
     return (
         <div ref={setNodeRef} style={style} className="w-full">
-            <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center shadow hover:shadow-lg relative group">
+            <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 flex items-center justify-center shadow hover:shadow-lg relative group">
                 <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 flex items-center gap-1">
                     <button
                         className="p-2 rounded border dark:border-black shadow-sm bg-red-500 hover:bg-red-400 text-white"
@@ -77,7 +78,12 @@ const SortableItem = ({ widget }: SortableItemProps) => {
                     </button>
                 </div>
                 <div className="handle" data-dnd-handle></div>
-                <WidgetComponent name={name} color1={color1} color2={color2} />
+                <WidgetComponent
+                    name={name}
+                    color1={color1}
+                    color2={color2}
+                    dataset_url={dataset_url}
+                />
             </div>
         </div>
     );

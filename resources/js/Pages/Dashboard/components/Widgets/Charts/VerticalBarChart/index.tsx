@@ -3,6 +3,7 @@ interface VerticalBarChartProps {
     color1?: string;
     color2?: string;
     name?: string;
+    dataset_url?: string;
 }
 
 import {
@@ -31,6 +32,7 @@ const VerticalBarChart = ({
     name = "Vertical Bar Chart",
     color1 = "#6366f1",
     color2 = "#1f2937",
+    dataset_url,
 }: VerticalBarChartProps) => {
     const labels = widgetChartsData.labels;
     const options = {

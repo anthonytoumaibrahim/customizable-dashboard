@@ -4,6 +4,7 @@ import { Fragment } from "react/jsx-runtime";
 import { tabs } from "../../data";
 import WeatherWidgetCreator from "./WeatherWidgetCreator";
 import ChartsWidgetCreator from "./ChartsWidgetCreator";
+import SpotifyWidgetCreator from "./SpotifyWidgetCreator";
 
 interface NewWidgetModalProps {
     isOpen: boolean;
@@ -46,7 +47,9 @@ const NewWidgetModal = ({
                         <Tab.Panel>
                             <ChartsWidgetCreator />
                         </Tab.Panel>
-                        <Tab.Panel>Content 2</Tab.Panel>
+                        <Tab.Panel>
+                            <SpotifyWidgetCreator />
+                        </Tab.Panel>
                         <Tab.Panel>
                             <WeatherWidgetCreator />
                         </Tab.Panel>

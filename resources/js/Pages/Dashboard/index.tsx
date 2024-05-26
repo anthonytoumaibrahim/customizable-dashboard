@@ -19,6 +19,7 @@ export type WidgetsType = {
     color1?: string;
     color2?: string;
     size?: "small" | "large";
+    dataset_url?: string;
 };
 
 export default function Dashboard({

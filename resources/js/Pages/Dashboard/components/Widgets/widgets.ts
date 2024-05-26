@@ -1,7 +1,8 @@
-// Charts
+// Components
 import DoughnutChart from "./Charts/DoughnutChart";
 import LineChart from "./Charts/LineChart";
 import VerticalBarChart from "./Charts/VerticalBarChart";
+import SpotifyWidget from "./Spotify";
 import WeatherWidget from "./Weather";
 
 export const widgets = {
@@ -35,6 +36,13 @@ export const widgets = {
             id: 1,
             name: "Weather Widget",
             component: WeatherWidget,
+        },
+    ],
+    spotify: [
+        {
+            id: 1,
+            name: "Spotify Album",
+            component: SpotifyWidget,
         },
     ],
 };
