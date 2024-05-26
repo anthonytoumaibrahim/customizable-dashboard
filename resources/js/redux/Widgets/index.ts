@@ -22,6 +22,4 @@ export const widgetsSlice = createSlice({
 
 export const { addWidget } = widgetsSlice.actions;
 
-export const selectCount = (state: RootState) => state.counter.value;
-
 export default widgetsSlice.reducer;
