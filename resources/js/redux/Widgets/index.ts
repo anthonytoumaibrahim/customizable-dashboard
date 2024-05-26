@@ -23,9 +23,17 @@ export const widgetsSlice = createSlice({
         addWidget: (state, action: PayloadAction<WidgetsType>) => {
             state.widgets.push(action.payload);
         },
+        removeWidget: (state, action: PayloadAction<number>) => {
+            return {
+                widgets: state.widgets.filter(
+                    (widget) => widget.id !== action.payload
+                ),
+            };
+        },
     },
 });
 
-export const { addWidget, initializeWidgets } = widgetsSlice.actions;
+export const { addWidget, initializeWidgets, removeWidget } =
+    widgetsSlice.actions;
 
 export default widgetsSlice.reducer;
