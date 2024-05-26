@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { WidgetsType } from "..";
-import { widgets as widgetsData } from "./Widgets/widgets";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { FaTrash } from "react-icons/fa6";
+import axios from "axios";
 
 interface WidgetsGridProps {
     widgets: Array<WidgetsType>;
@@ -68,6 +67,13 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
             dispatch({
                 type: "widgets/initializeWidgets",
                 payload: newItems.sort((a, b) => a.order - b.order),
+            });
+
+            axios.post("/move-widget", {
+                id1: active.id,
+                order1: widgetsSelector[overIndex].order,
+                id2: over.id,
+                order2: widgetsSelector[activeIndex].order,
             });
         }
     }

@@ -32,8 +32,17 @@ class WidgetsController extends Controller
     {
         $request->validate([
             'id1' => 'exists:widgets,id',
-            'id2' => 'exists:widgets,id'
+            'order1' => 'required|numeric',
+            'id2' => 'exists:widgets,id',
+            'order2' => 'required|numeric',
         ]);
+        $widget1 = Widget::find($request->id1);
+        $widget1->order = $request->order1;
+        $widget1->saveOrFail();
+
+        $widget2 = Widget::find($request->id2);
+        $widget2->order = $request->order2;
+        $widget2->saveOrFail();
     }
 
     public function deleteWidget(Request $request)
