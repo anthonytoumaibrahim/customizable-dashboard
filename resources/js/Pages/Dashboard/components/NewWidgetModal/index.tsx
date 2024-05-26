@@ -2,7 +2,7 @@ import Modal from "@/Components/Modal";
 import { Tab } from "@headlessui/react";
 import { Fragment } from "react/jsx-runtime";
 import { tabs } from "../../data";
-import WeatherWidgetCreator from "./Weather";
+import WeatherWidgetCreator from "./WeatherWidgetCreator";
 import ChartsWidgetCreator from "./ChartsWidgetCreator";
 
 interface NewWidgetModalProps {

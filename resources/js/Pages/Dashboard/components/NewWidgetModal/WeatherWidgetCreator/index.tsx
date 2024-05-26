@@ -1,10 +1,7 @@
-import React from "react";
-import WeatherWidget from "../../Widgets/Weather";
-
 const WeatherWidgetCreator = () => {
     return (
         <div>
-            <WeatherWidget />
+            <h3 className="text-xl font-bold">Add Weather Widget</h3>
         </div>
     );
 };

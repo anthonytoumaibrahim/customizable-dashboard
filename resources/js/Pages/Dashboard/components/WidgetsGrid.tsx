@@ -66,7 +66,7 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
 
                         return (
                             <SortableItem key={id} id={id}>
-                                <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center">
+                                <div className="h-80 p-6 rounded-lg bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 grid place-content-center shadow hover:shadow-lg">
                                     <WidgetComponent
                                         name={name}
                                         color1={color1}
