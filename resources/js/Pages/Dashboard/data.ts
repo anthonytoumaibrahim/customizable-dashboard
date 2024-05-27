@@ -1,4 +1,10 @@
-import { FaChartPie, FaSpotify, FaCloud, FaChartLine } from "react-icons/fa6";
+import {
+    FaChartPie,
+    FaSpotify,
+    FaCloud,
+    FaChartLine,
+    FaNewspaper,
+} from "react-icons/fa6";
 
 export const tabs = [
     {
@@ -16,5 +22,9 @@ export const tabs = [
     {
         name: "Stocks",
         icon: FaChartLine,
+    },
+    {
+        name: "News",
+        icon: FaNewspaper,
     },
 ];

@@ -2,6 +2,7 @@
 import DoughnutChart from "./Charts/DoughnutChart";
 import LineChart from "./Charts/LineChart";
 import VerticalBarChart from "./Charts/VerticalBarChart";
+import NewsWidget from "./News";
 import SpotifyWidget from "./Spotify";
 import StockMarketWidget from "./StockMarket";
 import WeatherWidget from "./Weather";
@@ -42,7 +43,7 @@ export const widgets = {
     spotify: [
         {
             id: 1,
-            name: "Spotify Album",
+            name: "Spotify Widget",
             component: SpotifyWidget,
         },
     ],
@@ -51,6 +52,13 @@ export const widgets = {
             id: 1,
             name: "Stock Market",
             component: StockMarketWidget,
+        },
+    ],
+    news: [
+        {
+            id: 1,
+            name: "News Widget",
+            component: NewsWidget,
         },
     ],
 };

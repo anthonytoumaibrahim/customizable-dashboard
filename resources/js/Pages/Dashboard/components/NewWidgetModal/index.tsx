@@ -3,16 +3,17 @@ import toast from "react-hot-toast";
 import { useWidgetOrder } from "@/hooks/useWidgetOrder";
 import { useAppDispatch } from "@/redux/hooks";
 import { WidgetsType } from "../..";
-import Modal from "@/Components/Modal";
 import { Tab } from "@headlessui/react";
 import { tabs } from "../../data";
 import { Fragment } from "react";
+import Modal from "@/Components/Modal";
 
-// Components
+// Widget Creators
 import WeatherWidgetCreator from "./WeatherWidgetCreator";
 import ChartsWidgetCreator from "./ChartsWidgetCreator";
 import SpotifyWidgetCreator from "./SpotifyWidgetCreator";
 import StockWidgetCreator from "./StockWidgetCreator";
+import NewsWidgetCreator from "./NewsWidgetCreator";
 
 interface NewWidgetModalProps {
     isOpen: boolean;
@@ -117,6 +118,11 @@ const NewWidgetModal = ({
                         </Tab.Panel>
                         <Tab.Panel>
                             <StockWidgetCreator
+                                handleAddWidget={handleAddWidget}
+                            />
+                        </Tab.Panel>
+                        <Tab.Panel>
+                            <NewsWidgetCreator
                                 handleAddWidget={handleAddWidget}
                             />
                         </Tab.Panel>
