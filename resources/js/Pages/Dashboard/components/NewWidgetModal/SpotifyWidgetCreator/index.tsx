@@ -22,7 +22,7 @@ const SpotifyWidgetCreator = () => {
     };
 
     return (
-        <div>
+        <div className="space-y-2">
             <h3 className="text-xl font-bold">Add Spotify Widget</h3>
             <form action="" onSubmit={handleFormSubmit} className="space-y-2">
                 <TextInput

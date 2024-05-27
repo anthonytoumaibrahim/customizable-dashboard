@@ -21,7 +21,7 @@ const NewWidgetModal = ({
     return (
         <Modal show={isOpen} onClose={handleClose} maxWidth="2xl">
             <Tab.Group vertical>
-                <div className="flex max-md:flex-col gap-4 md:min-h-[320px]">
+                <div className="flex max-md:flex-col md:gap-4 md:min-h-[320px]">
                     <Tab.List className="flex md:flex-col w-full md:w-max bg-gray-100 dark:bg-gray-950 max-md:overflow-auto">
                         {tabs.map((tab, tabIndex) => {
                             const { name, icon: TabIcon } = tab;

@@ -19,7 +19,7 @@ const StockWidgetCreator = () => {
     };
 
     return (
-        <div>
+        <div className="space-y-2">
             <h3 className="text-xl font-bold">Add Stock Market Widget</h3>
             <div className="space-y-2">
                 <label className="flex items-center">
