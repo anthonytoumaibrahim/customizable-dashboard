@@ -36,6 +36,7 @@ const WeatherWidgetCreator = () => {
                 widget_id: 1,
                 order: widgetOrderSelector,
                 widget_data: JSON.stringify({
+                    cityName: name,
                     lat: lat,
                     long: lon,
                 }),
