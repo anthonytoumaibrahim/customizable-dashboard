@@ -3,6 +3,10 @@ interface LineChartProps {
     color1?: string;
     color2?: string;
     name?: string;
+    widget_data?: {
+        label1?: string;
+        label2?: string;
+    };
 }
 
 import {
@@ -32,7 +36,8 @@ const LineChart = ({
     className = "",
     name = "Line Chart",
     color1 = "#6366f1",
-    color2 = "#1f2937",
+    color2 = "#ff3f8c",
+    widget_data,
 }: LineChartProps) => {
     const options = {
         responsive: true,
@@ -51,16 +56,16 @@ const LineChart = ({
         labels,
         datasets: [
             {
-                label: "Dataset 1",
+                label: widget_data?.label1 ?? "Dataset 1",
                 data: widgetChartsData.data1,
-                backgroundColor: color1,
-                borderColor: color1,
+                backgroundColor: color1 !== "" ? color1 : "#6366f1",
+                borderColor: color1 !== "" ? color1 : "#6366f1",
             },
             {
-                label: "Dataset 2",
+                label: widget_data?.label2 ?? "Dataset 2",
                 data: widgetChartsData.data2,
-                backgroundColor: color2,
-                borderColor: color2,
+                backgroundColor: color2 !== "" ? color2 : "#ff3f8c",
+                borderColor: color2 !== "" ? color2 : "#ff3f8c",
             },
         ],
     };

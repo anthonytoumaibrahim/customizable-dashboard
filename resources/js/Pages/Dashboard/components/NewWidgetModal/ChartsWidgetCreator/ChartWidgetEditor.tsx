@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { router } from "@inertiajs/react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useWidgetOrder } from "@/hooks/useWidgetOrder";
+import { widgetColors } from "../../Widgets/widgets";
+
+// Components
 import TextInput from "@/Components/TextInput";
 import Color from "../components/Color";
-import { widgetColors } from "../../Widgets/widgets";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
-import { router } from "@inertiajs/react";
 import toast from "react-hot-toast";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Checkbox from "@/Components/Checkbox";
-import { useWidgetOrder } from "@/hooks/useWidgetOrder";
 
 interface ChartWidgetEditorProps {
     name: string;
@@ -28,6 +30,10 @@ const ChartWidgetEditor = ({
         color1: "",
         color2: "",
     });
+    const [labels, setLabels] = useState({
+        label1: "Dataset 1",
+        label2: "Dataset 2",
+    });
     const [large, setLarge] = useState(false);
 
     const dispatch = useAppDispatch();
@@ -45,6 +51,10 @@ const ChartWidgetEditor = ({
             size: large ? "large" : "small",
             color1: colors.color1,
             color2: colors.color2,
+            widget_data: JSON.stringify({
+                label1: labels.label1,
+                label2: labels.label2,
+            }),
         });
     };
 
@@ -55,6 +65,7 @@ const ChartWidgetEditor = ({
                 name={widgetName}
                 color1={colors.color1}
                 color2={colors.color2}
+                widget_data={labels}
             />
 
             <div className="flex flex-col gap-4 mt-4">
@@ -83,6 +94,31 @@ const ChartWidgetEditor = ({
                     value={widgetName}
                     onChange={(e) => setWidgetName(e.target.value)}
                 />
+
+                <div className="grid grid-cols-2 gap-2">
+                    <TextInput
+                        placeholder="Label 1"
+                        className="w-full"
+                        value={labels.label1}
+                        onChange={(e) =>
+                            setLabels({
+                                ...labels,
+                                label1: e.target.value,
+                            })
+                        }
+                    />
+                    <TextInput
+                        placeholder="Label 2"
+                        className="w-full"
+                        value={labels.label2}
+                        onChange={(e) =>
+                            setLabels({
+                                ...labels,
+                                label2: e.target.value,
+                            })
+                        }
+                    />
+                </div>
 
                 <label className="flex items-center">
                     <Checkbox
