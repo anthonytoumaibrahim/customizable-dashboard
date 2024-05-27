@@ -54,8 +54,9 @@ This project is bootstrapped with Laravel, and Laravel Inertia (React and Typesc
     ```
 4. Fill out the information in `.env` with your configuration details, including the database connection settings. You may use SQLite with this project if you desire.
 
-5. Run the migrations:
+5. Generate a Laravel project key, and run the migrations:
     ```sh
+    php artisan key:generate
     php artisan migrate
     ```
 6. To start the application, you need to run both of these commands (run each one in a separate terminal):
