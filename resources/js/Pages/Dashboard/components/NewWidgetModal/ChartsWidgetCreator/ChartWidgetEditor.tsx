@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { widgetColors } from "../../Widgets/widgets";
-import { WidgetsType } from "@/Pages/Dashboard";
 import { HandleAddWidgetParams } from "..";
-import axios from "axios";
 
 // Components
 import TextInput from "@/Components/TextInput";
@@ -51,6 +49,7 @@ const ChartWidgetEditor = ({
                 label1: labels.label1,
                 label2: labels.label2,
             }),
+            type: "charts",
         });
     };
 

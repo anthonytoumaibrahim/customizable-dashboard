@@ -1,23 +1,24 @@
 import { useState } from "react";
-import { useWidgetOrder } from "@/hooks/useWidgetOrder";
-import { router } from "@inertiajs/react";
+import { HandleAddWidgetParams } from "..";
 import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Checkbox from "@/Components/Checkbox";
 
-const SpotifyWidgetCreator = () => {
-    const widgetOrderSelector = useWidgetOrder();
+const SpotifyWidgetCreator = ({
+    handleAddWidget,
+}: {
+    handleAddWidget: (params: HandleAddWidgetParams) => void;
+}) => {
     const [url, setUrl] = useState("");
     const [large, setLarge] = useState(false);
 
     const handleFormSubmit = () => {
-        router.post("/add-widget", {
-            name: "Spotify Album",
+        handleAddWidget({
+            id: 1,
             type: "spotify",
-            widget_id: 1,
-            order: widgetOrderSelector,
+            name: "Spotify Widget",
+            large: large,
             dataset_url: url,
-            size: large ? "large" : "small",
         });
     };
 

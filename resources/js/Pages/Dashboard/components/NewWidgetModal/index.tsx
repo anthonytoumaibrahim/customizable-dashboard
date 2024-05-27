@@ -21,10 +21,12 @@ interface NewWidgetModalProps {
 
 export interface HandleAddWidgetParams {
     name: string;
+    type: string;
     id: number;
-    large: boolean;
+    large?: boolean;
     colors?: { color1: string; color2: string };
     widget_data?: string;
+    dataset_url?: string;
 }
 
 const NewWidgetModal = ({
@@ -40,17 +42,20 @@ const NewWidgetModal = ({
         large = false,
         colors,
         widget_data,
+        type,
+        dataset_url,
     }: HandleAddWidgetParams) => {
         axios
             .post("/add-widget", {
                 name: name,
-                type: "charts",
+                type: type,
                 widget_id: id,
                 order: widgetOrderSelector,
                 size: large ? "large" : "small",
                 color1: colors?.color1 ?? "",
                 color2: colors?.color2 ?? "",
                 widget_data: widget_data,
+                dataset_url: dataset_url,
             })
             .then((res) => {
                 const data: { success: boolean; widget: WidgetsType } =
@@ -101,13 +106,19 @@ const NewWidgetModal = ({
                             />
                         </Tab.Panel>
                         <Tab.Panel>
-                            <SpotifyWidgetCreator />
+                            <SpotifyWidgetCreator
+                                handleAddWidget={handleAddWidget}
+                            />
                         </Tab.Panel>
                         <Tab.Panel>
-                            <WeatherWidgetCreator />
+                            <WeatherWidgetCreator
+                                handleAddWidget={handleAddWidget}
+                            />
                         </Tab.Panel>
                         <Tab.Panel>
-                            <StockWidgetCreator />
+                            <StockWidgetCreator
+                                handleAddWidget={handleAddWidget}
+                            />
                         </Tab.Panel>
                     </Tab.Panels>
                 </div>

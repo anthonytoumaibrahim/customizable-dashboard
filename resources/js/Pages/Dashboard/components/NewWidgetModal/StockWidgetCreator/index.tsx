@@ -1,20 +1,22 @@
-import Checkbox from "@/Components/Checkbox";
-import PrimaryButton from "@/Components/PrimaryButton";
-import { useWidgetOrder } from "@/hooks/useWidgetOrder";
 import { router } from "@inertiajs/react";
 import { useState } from "react";
+import { HandleAddWidgetParams } from "..";
+import Checkbox from "@/Components/Checkbox";
+import PrimaryButton from "@/Components/PrimaryButton";
 
-const StockWidgetCreator = () => {
-    const widgetOrderSelector = useWidgetOrder();
+const StockWidgetCreator = ({
+    handleAddWidget,
+}: {
+    handleAddWidget: (params: HandleAddWidgetParams) => void;
+}) => {
     const [large, setLarge] = useState(false);
 
     const addStockWidget = () => {
-        router.post("/add-widget", {
-            name: "Stock Market Widget",
+        handleAddWidget({
+            id: 1,
             type: "stock",
-            widget_id: 1,
-            order: widgetOrderSelector,
-            size: large ? "large" : "small",
+            name: "Stock Market Widget",
+            large: large,
         });
     };
 

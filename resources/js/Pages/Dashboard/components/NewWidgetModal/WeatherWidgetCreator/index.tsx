@@ -1,9 +1,8 @@
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
-import { useWidgetOrder } from "@/hooks/useWidgetOrder";
-import { router } from "@inertiajs/react";
+import { HandleAddWidgetParams } from "..";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
+import PrimaryButton from "@/Components/PrimaryButton";
+import TextInput from "@/Components/TextInput";
 
 type OpenWeatherAPIResponseType = Array<{
     name: string;
@@ -11,9 +10,12 @@ type OpenWeatherAPIResponseType = Array<{
     lon: number;
 }>;
 
-const WeatherWidgetCreator = () => {
+const WeatherWidgetCreator = ({
+    handleAddWidget,
+}: {
+    handleAddWidget: (params: HandleAddWidgetParams) => void;
+}) => {
     const [cityName, setCityName] = useState("");
-    const widgetOrderSelector = useWidgetOrder();
 
     const handleFormSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -30,11 +32,10 @@ const WeatherWidgetCreator = () => {
             }
             // City found
             const { name, lat, lon } = data[0];
-            router.post("/add-widget", {
-                name: `Weather in ${name}`,
+            handleAddWidget({
+                id: 1,
                 type: "weather",
-                widget_id: 1,
-                order: widgetOrderSelector,
+                name: `Weather in ${name}`,
                 widget_data: JSON.stringify({
                     cityName: name,
                     lat: lat,
