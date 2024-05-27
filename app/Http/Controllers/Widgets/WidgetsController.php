@@ -25,7 +25,10 @@ class WidgetsController extends Controller
         $widget->widget_data = $request->widget_data;
         $widget->saveOrFail();
 
-        return Redirect::route('dashboard');
+        return response()->json([
+            'success' => true,
+            'widget' => $widget
+        ]);
     }
 
     public function moveWidget(Request $request)

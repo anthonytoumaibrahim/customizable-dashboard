@@ -85,28 +85,30 @@ const WidgetsGrid = ({ widgets = [] }: WidgetsGridProps) => {
         });
     }, []);
 
-    return (
-        widgetsSelector.length > 0 && (
-            <DndContext
-                sensors={sensors}
-                collisionDetection={closestCenter}
-                onDragEnd={handleDragEnd}
+    return widgetsSelector.length > 0 ? (
+        <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+        >
+            <SortableContext
+                items={widgetsSelector}
+                strategy={rectSwappingStrategy}
             >
-                <SortableContext
-                    items={widgetsSelector}
-                    strategy={rectSwappingStrategy}
+                <div
+                    className="flex flex-wrap md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
+                    data-no-dnd="true"
                 >
-                    <div
-                        className="flex flex-wrap md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
-                        data-no-dnd="true"
-                    >
-                        {widgetsSelector.map((data) => (
-                            <SortableItem key={data.id} widget={data} />
-                        ))}
-                    </div>
-                </SortableContext>
-            </DndContext>
-        )
+                    {widgetsSelector.map((data) => (
+                        <SortableItem key={data.id} widget={data} />
+                    ))}
+                </div>
+            </SortableContext>
+        </DndContext>
+    ) : (
+        <div className="text-center mt-2">
+            You don't have any widgets yet. Start by adding one now!
+        </div>
     );
 };
 

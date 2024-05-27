@@ -1,7 +1,12 @@
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useWidgetOrder } from "@/hooks/useWidgetOrder";
+import { useAppDispatch } from "@/redux/hooks";
+import { WidgetsType } from "../..";
 import Modal from "@/Components/Modal";
 import { Tab } from "@headlessui/react";
-import { Fragment } from "react/jsx-runtime";
 import { tabs } from "../../data";
+import { Fragment } from "react";
 
 // Components
 import WeatherWidgetCreator from "./WeatherWidgetCreator";
@@ -14,10 +19,53 @@ interface NewWidgetModalProps {
     handleClose: () => void;
 }
 
+export interface HandleAddWidgetParams {
+    name: string;
+    id: number;
+    large: boolean;
+    colors?: { color1: string; color2: string };
+    widget_data?: string;
+}
+
 const NewWidgetModal = ({
     isOpen = false,
     handleClose,
 }: NewWidgetModalProps) => {
+    const dispatch = useAppDispatch();
+    const widgetOrderSelector = useWidgetOrder();
+
+    const handleAddWidget = ({
+        name,
+        id,
+        large = false,
+        colors,
+        widget_data,
+    }: HandleAddWidgetParams) => {
+        axios
+            .post("/add-widget", {
+                name: name,
+                type: "charts",
+                widget_id: id,
+                order: widgetOrderSelector,
+                size: large ? "large" : "small",
+                color1: colors?.color1 ?? "",
+                color2: colors?.color2 ?? "",
+                widget_data: widget_data,
+            })
+            .then((res) => {
+                const data: { success: boolean; widget: WidgetsType } =
+                    res.data;
+                dispatch({
+                    type: "widgets/addWidget",
+                    payload: data.widget,
+                });
+                handleClose();
+            })
+            .catch((err) =>
+                toast.error("Sorry, this widget couldn't be added.")
+            );
+    };
+
     return (
         <Modal show={isOpen} onClose={handleClose} maxWidth="2xl">
             <Tab.Group vertical>
@@ -48,7 +96,9 @@ const NewWidgetModal = ({
                     </Tab.List>
                     <Tab.Panels className="p-4 w-full">
                         <Tab.Panel>
-                            <ChartsWidgetCreator />
+                            <ChartsWidgetCreator
+                                handleAddWidget={handleAddWidget}
+                            />
                         </Tab.Panel>
                         <Tab.Panel>
                             <SpotifyWidgetCreator />

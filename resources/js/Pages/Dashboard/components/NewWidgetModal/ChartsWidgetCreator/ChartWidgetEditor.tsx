@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { router } from "@inertiajs/react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useWidgetOrder } from "@/hooks/useWidgetOrder";
 import { widgetColors } from "../../Widgets/widgets";
+import { WidgetsType } from "@/Pages/Dashboard";
+import { HandleAddWidgetParams } from "..";
+import axios from "axios";
 
 // Components
 import TextInput from "@/Components/TextInput";
@@ -17,6 +17,7 @@ interface ChartWidgetEditorProps {
     component: any;
     id: number;
     handleGoBack: () => void;
+    handleAddWidget: (params: HandleAddWidgetParams) => void;
 }
 
 const ChartWidgetEditor = ({
@@ -24,6 +25,7 @@ const ChartWidgetEditor = ({
     component: ChartComponent,
     id,
     handleGoBack,
+    handleAddWidget,
 }: ChartWidgetEditorProps) => {
     const [widgetName, setWidgetName] = useState("");
     const [colors, setColors] = useState({
@@ -36,21 +38,15 @@ const ChartWidgetEditor = ({
     });
     const [large, setLarge] = useState(false);
 
-    const dispatch = useAppDispatch();
-    const widgetOrderSelector = useWidgetOrder();
-
     const addWidget = () => {
         if (widgetName.trim() === "") {
             return toast.error("Please enter a name for this chart.");
         }
-        router.post("/add-widget", {
+        handleAddWidget({
+            id: id,
             name: widgetName,
-            type: "charts",
-            widget_id: id,
-            order: widgetOrderSelector,
-            size: large ? "large" : "small",
-            color1: colors.color1,
-            color2: colors.color2,
+            large: large,
+            colors: colors,
             widget_data: JSON.stringify({
                 label1: labels.label1,
                 label2: labels.label2,

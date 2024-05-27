@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { widgets } from "../../Widgets/widgets";
 import ChartWidgetEditor from "./ChartWidgetEditor";
+import { HandleAddWidgetParams } from "..";
 
-const ChartsWidgetCreator = () => {
+interface ChartsWidgetCreatorProps {
+    handleAddWidget: (params: HandleAddWidgetParams) => void;
+}
+
+const ChartsWidgetCreator = ({ handleAddWidget }: ChartsWidgetCreatorProps) => {
     const [selectedChart, setSelectedChart] = useState<number | null>(null);
     const selected = widgets.charts.filter(
         (chart) => chart.id === selectedChart
@@ -14,6 +19,7 @@ const ChartsWidgetCreator = () => {
             component={selected?.[0]?.component}
             id={selected?.[0]?.id}
             handleGoBack={() => setSelectedChart(null)}
+            handleAddWidget={handleAddWidget}
         />
     ) : (
         <div className="grid grid-cols-2 gap-4">
