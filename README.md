@@ -13,6 +13,9 @@ This project is bootstrapped with Laravel, and Laravel Inertia (React and Typesc
 -   `/database`: Database migrations, factories, and seeders. Also contains the SQLite database, should you choose to use SQLite.
 -   `/routes`: The routes for the application. The routes for managing the widgets is in the `web.php` file.
 -   `/resources`:
+    -   `/resources/js/Pages/Dashboard` folder contains most of the frontend logic for this application.
+    -   `/resources/js/hooks` folder contains the custom React hooks.
+    -   `/resources/js/redux` folder contains the Redux logic.
 
 ## How to Run
 
