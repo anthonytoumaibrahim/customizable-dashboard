@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { HandleAddWidgetParams } from "..";
 import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
@@ -12,7 +12,9 @@ const SpotifyWidgetCreator = ({
     const [url, setUrl] = useState("");
     const [large, setLarge] = useState(false);
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit = (e: FormEvent) => {
+        e.preventDefault();
+
         handleAddWidget({
             id: 1,
             type: "spotify",

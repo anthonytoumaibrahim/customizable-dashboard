@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { HandleAddWidgetParams } from "..";
 import TextInput from "@/Components/TextInput";
@@ -12,7 +12,8 @@ const NewsWidgetCreator = ({
     const [interests, setInterests] = useState("");
     const [large, setLarge] = useState(false);
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit = (e: FormEvent) => {
+        e.preventDefault();
         handleAddWidget({
             id: 1,
             type: "news",
