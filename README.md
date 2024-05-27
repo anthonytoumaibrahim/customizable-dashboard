@@ -7,6 +7,13 @@ Customizable Dashboard is a Laravel project that allows you to add, position, an
 
 ## Project Structure
 
+This project is bootstrapped with Laravel, and Laravel Inertia (React and Typescript). You may read about the structure in the [Laravel documentation](https://laravel.com/docs/11.x/structure).
+
+-   `/app`: Core code of the application (includes models, controllers, and providers). The `Widgets/WidgetController.php` file handles the logic to create, move and delete a user's widgets from the database.
+-   `/database`: Database migrations, factories, and seeders. Also contains the SQLite database, should you choose to use SQLite.
+-   `/routes`: The routes for the application. The routes for managing the widgets is in the `web.php` file.
+-   `/resources`:
+
 ## How to Run
 
 ### Prerequisites
@@ -48,8 +55,26 @@ Customizable Dashboard is a Laravel project that allows you to add, position, an
     ```sh
     php artisan migrate
     ```
-6. To start the application, you need to run both of these commands (open each one in a separate terminal):
+6. To start the application, you need to run both of these commands (run each one in a separate terminal):
     ```sh
     php artisan serve
     npm run dev
     ```
+
+## Usage
+
+This section details how to use the application, after you set up the project locally.
+
+To use this application, simply create or login to an existing account, after which you will be redirected to the dashboard. Once you're in the dashboard, you can click on the button to the right, labelled "Add New", to create and add widgets to your dashboard:
+
+| New Widget Popup                     | Customize Chart                                  |
+| ------------------------------------ | ------------------------------------------------ |
+| ![Add New](./readme/add_new.png)     | ![Customize Chart](./readme/chart_customize.png) |
+| Dashboard                            |
+| ![Dashboard](./readme/dashboard.png) |
+
+This application is also optimized for mobile:
+
+| New Widget Popup                           | Dashboard                                   |
+| ------------------------------------------ | ------------------------------------------- |
+| ![Add New](./readme/new_widget_mobile.png) | ![Dashboard](./readme/dashboard_mobile.png) |
