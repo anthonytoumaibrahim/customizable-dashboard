@@ -4,6 +4,7 @@ interface VerticalBarChartProps {
     color2?: string;
     name?: string;
     dataset_url?: string;
+    widget_data?: object;
 }
 
 import {

@@ -40,18 +40,15 @@ const SortableItem = ({ widget }: SortableItemProps) => {
         ...wrapperStyle,
     };
 
-    const { id, name, type, widget_id, color1, color2, size, dataset_url } =
-        widget;
-
-    const selectedWidget = widgetsData?.[type].filter(
-        (widget) => widget.id === widget_id
+    const selectedWidget = widgetsData?.[widget.type].filter(
+        (widgetData) => widgetData.id === widget.widget_id
     )?.[0];
     const WidgetComponent = selectedWidget.component;
 
-    const handleDelete = (id: number) => {
+    const handleDelete = () => {
         dispatch({
             type: "widgets/removeWidget",
-            payload: id,
+            payload: widget.id,
         });
         axios.delete("/widget", {
             data: {
@@ -66,7 +63,7 @@ const SortableItem = ({ widget }: SortableItemProps) => {
                 <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 flex items-center gap-1">
                     <button
                         className="p-2 rounded border dark:border-black shadow-sm bg-red-500 hover:bg-red-400 text-white"
-                        onClick={() => handleDelete(id)}
+                        onClick={() => handleDelete()}
                     >
                         <FaTrash />
                     </button>
@@ -80,10 +77,11 @@ const SortableItem = ({ widget }: SortableItemProps) => {
                 </div>
                 <div className="handle" data-dnd-handle></div>
                 <WidgetComponent
-                    name={name}
-                    color1={color1}
-                    color2={color2}
-                    dataset_url={dataset_url}
+                    name={widget.name}
+                    color1={widget.color1}
+                    color2={widget.color2}
+                    dataset_url={widget.dataset_url}
+                    widget_data={JSON.parse(widget.widget_data ?? "[]")}
                 />
             </div>
         </div>
