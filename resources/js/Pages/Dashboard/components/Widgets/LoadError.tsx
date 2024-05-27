@@ -7,7 +7,7 @@ const LoadError = () => {
             <h4 className="text-red-500 font-bold text-lg">
                 Something went wrong!
             </h4>
-            <p>Sorry, the Weather Widget couldn't be loaded.</p>
+            <p>Sorry, this Widget couldn't be loaded.</p>
         </div>
     );
 };

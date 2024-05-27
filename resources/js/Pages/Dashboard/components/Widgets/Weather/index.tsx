@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LoadError from "./LoadError";
+import LoadError from "../LoadError";
 import axios from "axios";
 
 interface WeatherWidgetProps {
